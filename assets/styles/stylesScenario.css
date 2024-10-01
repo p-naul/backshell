@@ -128,7 +128,6 @@ ul > li {
 }
 
 ul > li::before {
-  content: "•"; /* Ajouter la puce personnalisée */
   color: #007eb5; /* Couleur de la puce */
   font-size: 20px; /* Taille de la puce */
   margin-right: 10px; /* Espacement entre la puce et le texte */
@@ -136,7 +135,7 @@ ul > li::before {
 }
 
 ul ul {
-  margin-left: 30px; /* Indentation pour les sous-listes */
+  margin-left: 0px; /* Indentation pour les sous-listes */
 }
 
 ul ul > li {
@@ -144,7 +143,7 @@ ul ul > li {
   align-items: flex-start; /* Aligner l'icône chevron avec le texte */
   position: relative;
   margin-bottom: 10px; /* Ajout d'un espacement entre les éléments de la sous-liste */
-  margin-left: 30px;
+  margin-left: 0px;
   font-size: 15px;
 }
 
@@ -152,7 +151,7 @@ ul ul > li::before {
   content: "›"; /* Chevron pour les sous-points */
   color: #333; /* Couleur du chevron */
   font-size: 20px; /* Taille du chevron */
-  margin-right: 10px; /* Espacement entre le chevron et le texte */
+  margin-right: 5px; /* Espacement entre le chevron et le texte */
   line-height: 1; /* Ajuster la hauteur de ligne de la puce */
   margin-top: 3px; /* Ajuster la position verticale du chevron */
 }
@@ -304,7 +303,7 @@ ul ul li span.material-symbols-outlined {
   appearance: none;
   width: 30px; /* Set a specific slider handle width */
   height: 30px; /* Slider handle height */
-  background: #00b3ff; /* Green background */
+  background: #010a0f; /* Green background */
   cursor: pointer; /* Cursor on hover */
   border-radius: 15px;
 }
