@@ -286,7 +286,7 @@ ul ul li span.material-symbols-outlined {
 .slidecontainer {
   width: 10%; /* Width of the outside container */
 }
-.slider {
+.sliderR {
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   width: 90px; /* Full-width */
@@ -298,12 +298,54 @@ ul ul li span.material-symbols-outlined {
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */
   transition: opacity .2s;
 }
-.slider::-webkit-slider-thumb {
+.sliderR::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
   width: 26px; /* Set a specific slider handle width */
   height: 26px; /* Slider handle height */
-  background: #010a0f; /* Green background */
+  background: #ff0000; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 15px;
+}
+.sliderV {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 90px; /* Full-width */
+  height: 10px; /* Specified height */
+  border-radius: 10px;
+  background: #b9b9b9; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+.sliderV::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 26px; /* Set a specific slider handle width */
+  height: 26px; /* Slider handle height */
+  background: #01ff38; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 15px;
+}
+.sliderB {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 90px; /* Full-width */
+  height: 10px; /* Specified height */
+  border-radius: 10px;
+  background: #b9b9b9; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+.sliderB::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 26px; /* Set a specific slider handle width */
+  height: 26px; /* Slider handle height */
+  background: #0127ff; /* Green background */
   cursor: pointer; /* Cursor on hover */
   border-radius: 15px;
 }
