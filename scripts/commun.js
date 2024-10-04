@@ -29,6 +29,18 @@ function move(ID, TX, TY, TZ) {
   });
 }
 
+function scale(ID, SX, SY, SZ) { //2=Y, 5=Z, 8=X
+  api.getMatrix(ID, function(err, matrix) {
+    window.console.log('matrix', matrix);
+    matrix.local[8]=.5+SX/2;
+    matrix.local[2]=.5+SY/2;
+    matrix.local[5]=.5+SZ/2;
+    matrice = matrix.local;
+    window.console.log('matrix', matrice);
+    api.setMatrix(ID, matrice, function(err, matrix) {
+    });
+  });
+}
 function moveRotate(ID, vX1, vX2, vX3, vY1, vY2, vY3, vZ1, vZ2, vZ3, TX, TY, TZ) {
   api.getMatrix(ID, function(err, matrix) {
     // window.console.log('matrix', matrix);
@@ -78,58 +90,6 @@ function moveRotate(ID, vX1, vX2, vX3, vY1, vY2, vY3, vZ1, vZ2, vZ3, TX, TY, TZ)
       closePopup();
     }
   };
-
-function computePastilles(wCanvas, hCanvas, bgColor, bgBorderColor, fgColor, fgBorderColor, text, numHotspot, wPastille, hPastille) {
-  var wSize = wPastille / 10.0;
-  var col = wCanvas / wSize;
-  var row = hCanvas / wSize;
-  var padding = 2;
-  var w = wSize - padding;
-  var cx;
-  var cy = w * 0.5;
-  var ty = cy + 8;
-  var pastille = '';
-  var num = 0;
-  for (var i = 0; i < row; i++) {
-    cx = wSize * 0.5;
-    for (var k = 0; k < col; k++) {
-      num++;
-      var letters = text === 0 ? num : text[num];
-      var circle = "<circle cx=\"".concat(cx, "\"\n            cy=\"").concat(cy, "\"\n            r=\"20\"\n            fill=\"").concat(bgColor, "\"\n            stroke=\"").concat(bgBorderColor, "\"\n            stroke-width=\"2\"/>");
-      var textVG = "<text font-size=\"26\"\n          stroke=\"".concat(fgBorderColor, "\"\n          fill=\"").concat(fgColor, "\"\n          font-family=\"sans-serif\"\n          text-anchor=\"middle\"\n          alignment-baseline=\"baseline\"\n          x=\"").concat(cx, "\"\n          y=\"").concat(ty, "\">").concat(letters, "</text>");
-      pastille += circle + textVG;
-      cx += wSize;
-    }
-    cy += wSize;
-    ty += wSize;
-  }
-  var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  s.setAttribute('version', '1.1');
-  s.setAttribute('baseProfile', 'full');
-  s.setAttribute('width', wPastille);
-  s.setAttribute('height', hPastille);
-  s.setAttribute('viewBox', "0 0 ".concat(wPastille, " ").concat(hPastille));
-  s.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-  s.innerHTML = pastille;
-  // make it base64
-  var svg64 = btoa(s.outerHTML);
-  var b64Start = 'data:image/svg+xml;base64,';
-  var image64 = b64Start + svg64;
-  var textureOptions = {
-    url: image64,
-    colNumber: col,
-    padding: padding,
-    iconSize: w
-  };
-  return textureOptions;
-}
-
-function getNewPastilleURL(bgColor, bgBorderColor, fgColor, fgBorderColor, text, numHotspot, w, h) {
-  var imageData;
-  imageData = computePastilles(w, h, bgColor, bgBorderColor, fgColor, fgBorderColor, text, numHotspot, w, h);
-  return imageData;
-}
-
 
 
 client.init(uid, {
