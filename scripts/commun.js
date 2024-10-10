@@ -31,17 +31,50 @@ function move(ID, TX, TY, TZ) {
 
 function scale(ID, SX, SY, SZ) { //2=Y, 5=Z, 8=X
   api.getMatrix(ID, function(err, matrix) {
-    window.console.log('matrix', matrix);
-    matrix.local[8]=.5+SX/2;
-    matrix.local[2]=.5+SY/2;
-    matrix.local[5]=.5+SZ/2;
+    // window.console.log('matrix', matrix);
+    // matrix.local[8]=.5+SX/2;
+    // matrix.local[2]=.5+SY/2;
+    // matrix.local[5]=.5+SZ/2;
+    matrix.local[8]=SX;
+    matrix.local[2]=-SY;
+    matrix.local[5]=SZ;
     matrice = matrix.local;
     window.console.log('matrix', matrice);
     api.setMatrix(ID, matrice, function(err, matrix) {
     });
   });
 }
-function moveRotate(ID, vX1, vX2, vX3, vY1, vY2, vY3, vZ1, vZ2, vZ3, TX, TY, TZ) {
+function scaleCheminee(ID, SX, SY, SZ) { 
+  api.getMatrix(ID, function(err, matrix) {
+    // window.console.log('matrix', matrix);
+    matrix.local[10]=SX;
+    matrix.local[0]=SY;
+    matrix.local[5]=SZ;
+    matrice = matrix.local;
+    window.console.log('matrix', matrice);
+    api.setMatrix(ID, matrice, function(err, matrix) {
+    });
+  });
+}
+function razEtui(){
+  api.translate(651, [-.006, -.003, .0539], {duration: .2, easing: 'easeOutQuad'}, function(err, translateTo) {}); 
+  api.translate(665, [-.006, -.011, .0539], {duration: .2, easing: 'easeOutQuad'}, function(err, translateTo) {}); 
+  api.translate(679, [-.006, -.019, .0539], {duration: .2, easing: 'easeOutQuad'}, function(err, translateTo) {}); 
+  SX=1;
+  SY=1;
+  SZ=1;
+  window.console.log('razEtui');
+}
+function razCheminee(){
+  api.translate(777, [.055, -.007, .0539], {duration: .2, easing: 'easeOutQuad'}, function(err, translateTo) {}); 
+  api.translate(791, [.055, -.019, .0539], {duration: .2, easing: 'easeOutQuad'}, function(err, translateTo) {}); 
+  SXc=1;
+  SYc=1;
+  SZc=1;
+  window.console.log('razCheminee');
+}
+
+function matrix(ID, vX1, vX2, vX3, vY1, vY2, vY3, vZ1, vZ2, vZ3, TX, TY, TZ) {
   api.getMatrix(ID, function(err, matrix) {
     // window.console.log('matrix', matrix);
     matrix.local[0]=vX1;
@@ -57,7 +90,7 @@ function moveRotate(ID, vX1, vX2, vX3, vY1, vY2, vY3, vZ1, vZ2, vZ3, TX, TY, TZ)
     matrix.local[13]=TZ/1000;
     matrix.local[14]=TY/1000;
     matrice = matrix.local;
-    // window.console.log('matrix', matrice);
+    window.console.log('matrix', matrice);
     api.setMatrix(ID, matrice, function(err, matrix) {
     });
   });
